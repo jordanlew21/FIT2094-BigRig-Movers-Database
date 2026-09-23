@@ -12,10 +12,17 @@ DROP TABLE job CASCADE CONSTRAINTS PURGE;
 DROP TABLE quote CASCADE CONSTRAINTS PURGE;
 
 -- Task 1 Add Create table statements for the Missing TABLES below
--- Ensure all column comments, and constraints (other than FK's)
--- are included. FK constraints are to be added at the end of this script
+-- Define the missing relational tables and their database rules
+-- using the existing BRM data model and naming conventions.
+-- Primary keys, validation constraints and column documentation
+-- are included with each table, while foreign keys are added later
+-- after all required tables have been created.
 
 -- EMPLOYEE
+-- Store employee details, roles and reporting relationships.
+-- The self-referencing manager field allows employees to be
+-- linked to another employee who acts as their manager.
+
 CREATE TABLE employee (
     emp_no          NUMBER(4)     NOT NULL,
     emp_gname       VARCHAR2(30)  NOT NULL,
@@ -41,6 +48,11 @@ CHECK (emp_role IN ('B','T','M','D'));
 
 
 -- JOB
+-- Store scheduled moving jobs, including timing, cost,
+-- payment status and the employees and vehicles assigned.
+-- Foreign keys below connect each job to its related quote,
+-- dispatcher, driver, truck and trailer.
+
 CREATE TABLE job (
     job_no                   NUMBER(5)     NOT NULL,
     job_pickup_dt            DATE          NOT NULL,
@@ -73,6 +85,10 @@ CHECK (job_payment_made IN ('Y','N'));
 
 
 -- QUOTE
+-- Store customer moving requests as quotes, including
+-- requested dates, locations, cost and the dispatcher
+-- responsible for preparing each quote.
+
 CREATE TABLE quote (
     quote_no             NUMBER(5)     NOT NULL,
     quote_prepared_date  DATE          NOT NULL,

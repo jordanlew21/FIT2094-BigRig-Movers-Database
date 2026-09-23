@@ -4,9 +4,11 @@
 
 --
 /* (a) */
--- PLEASE PLACE REQUIRED SQL SELECT STATEMENT FOR THIS PART HERE
--- ENSURE that your query is formatted and has a semicolon
--- (;) at the end of this answer
+-- Identify customers who have submitted multiple quotes and whose
+-- average quoted cost is above the overall average quote cost.
+-- Display the customer name, number of quotes and average quoted cost,
+-- using the business name where available and the customer's full name otherwise.
+-- Results are ordered by average quoted cost from highest to lowest.
 COLUMN customer_name FORMAT A20
 COLUMN num_quotes FORMAT A10
 COLUMN avg_quoted_cost FORMAT A15
@@ -32,9 +34,12 @@ ORDER BY AVG(q.quote_cost) DESC, c.cust_no;
 
 
 /* (b) */
--- PLEASE PLACE REQUIRED SQL SELECT STATEMENT FOR THIS PART HERE
--- ENSURE that your query is formatted and has a semicolon
--- (;) at the end of this answer
+-- Display every employee with their full name, role, manager and
+-- number of jobs scheduled.
+-- A self-join is used to retrieve each employee's manager from the
+-- employee table, while a subquery counts jobs only for Truck Dispatchers.
+-- Employees without a manager are displayed as "No Manager".
+-- Results are ordered by employee number.
 COLUMN emp_name FORMAT A20
 COLUMN manager_name FORMAT A15
 SELECT 
@@ -66,9 +71,13 @@ ORDER BY e.emp_no;
 
 
 /* (c) */
--- PLEASE PLACE REQUIRED SQL SELECT STATEMENT FOR THIS PART HERE
--- ENSURE that your query is formatted and has a semicolon
--- (;) at the end of this answer
+-- Analyse each truck and trailer combination to show how often it
+-- has been used and the total job cost associated with it.
+-- The query also classifies combinations as High Use, Standard Use
+-- or Never Used by comparing usage with the average across used combinations.
+-- Formatting is applied to present monetary values in a consistent
+-- fixed-width currency format, including "No jobs" for unused combinations.
+-- Results are ordered by number of jobs, then truck VIN and trailer code.
 COLUMN TRUCK_REGO FORMAT A10
 COLUMN TRAILER_CODE FORMAT A15
 SELECT 

@@ -4,13 +4,22 @@
 --T6-brm-json.sql
 
 -- 
+-- Configure SQL*Plus output so each generated JSON document is
+-- displayed without page headings or unnecessary line wrapping.
 SET PAGESIZE 100
 SET WRAP OFF
 SET HEADING OFF
 
--- PLEASE PLACE REQUIRED SQL SELECT STATEMENT FOR THIS PART HERE
--- ENSURE that your query is formatted and has a semicolon
--- (;) at the end of this answer
+-- Generate one JSON document for each customer containing their
+-- personal/business details, contact information, address and
+-- aggregated job statistics.
+-- The document also contains a nested array of the customer's quotes,
+-- including quote details, whether each quote became a job and the
+-- corresponding job cost where applicable.
+-- JSON_OBJECT and JSON_ARRAYAGG are used to transform relational
+-- database records into structured JSON documents.
+-- LEFT JOINs ensure customers and quotes are retained even when
+-- they do not have an associated job.
 SELECT JSON_OBJECT(
     '_id' VALUE c.cust_no,
     'customer_name' VALUE 

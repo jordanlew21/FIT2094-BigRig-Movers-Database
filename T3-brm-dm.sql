@@ -4,6 +4,9 @@
 
 --
 --3(a)
+
+-- Create sequences to automatically generate unique IDs for
+-- employees, quotes and jobs when new records are inserted.
 -- Drop sequences if they already exist
 DROP SEQUENCE employee_seq;
 DROP SEQUENCE quote_seq;
@@ -26,7 +29,10 @@ INCREMENT BY 5;
 
 --3(b)
 
--- Insert employee Aurello Brown that is assigned to manager Sarah Mitchell 
+-- Add a new Truck Dispatcher, Aurello Brown, and assign
+-- the employee to the existing manager Sarah Mitchell.
+-- The manager's employee number is retrieved using a
+-- subquery rather than being hard-coded.
 INSERT INTO employee (
     emp_no,
     emp_gname,
@@ -51,7 +57,9 @@ VALUES (
 COMMIT;
 
 --3(c)
--- Insert quote + job for Victoria Ella (Flintstone Store)
+-- Create a quote and scheduled job for Victoria Ella
+-- from Flintstone Store, demonstrating how related
+-- customer, employee and operational records are created.
 
 -- INSERT QUOTE
 
@@ -85,6 +93,10 @@ VALUES (
 COMMIT;
 
 -- INSERT JOB
+
+-- Create a scheduled job for the quote, linking the quote
+-- to the dispatcher, driver, truck and trailer while
+-- recording the planned pickup, drop-off and payment status.
 INSERT INTO job (
     job_no,
     job_pickup_dt,
@@ -119,7 +131,10 @@ VALUES (
 COMMIT;
 
 --3(d)
--- Update job: shift pickup time + increase cost by 20%
+
+-- Update the scheduled job after a change to the booking.
+-- The pickup time is moved to 2:00 PM and the existing
+-- job cost is increased by 20%.
 
 UPDATE job
 SET job_pickup_dt = TO_DATE('25-May-2026 14:00','dd-Mon-yyyy hh24:mi'),
@@ -136,7 +151,9 @@ WHERE quote_no = (
 COMMIT;
 
 --3(e)
--- Delete job for Victoria Ella (Flintstone Store)
+-- Cancel the scheduled job for Victoria Ella from
+-- Flintstone Store by identifying the job through its
+-- related quote and customer details.
 
 DELETE FROM job
 WHERE quote_no = (

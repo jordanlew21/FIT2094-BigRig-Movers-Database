@@ -11,6 +11,9 @@ I used ChatGPT (OpenAI)
 Prompt: "Generate SQL insert statements for EMPLOYEE, QUOTE, and JOB tables following assignment constraints"
 */
 
+-- Generate representative employee data covering multiple roles and
+-- reporting relationships, including managers, truck dispatchers,
+-- mechanics and drivers.
 --------------------------------------
 -- EMPLOYEE (10 rows)
 --------------------------------------
@@ -33,6 +36,10 @@ INSERT INTO employee VALUES (10, 'Ava', 'Martin', '0411111120', 'LIC889922', 'D'
 INSERT INTO employee VALUES (11, 'Sarah', 'Mitchell', '0411222233', NULL, 'B', NULL);
 INSERT INTO employee VALUES (12, 'Michael', 'Johnson', '0411333344', 'LIC11223', 'D', 3);
 --------------------------------------
+-- Create quote data across multiple customers and dispatchers.
+-- Repeated customers and varied quote values provide data for
+-- testing customer-level aggregation and comparison queries.
+
 -- QUOTE (30 rows)
 --------------------------------------
 
@@ -74,6 +81,11 @@ INSERT INTO quote VALUES (29, TO_DATE('03-Jun-2026','dd-Mon-yyyy'), TO_DATE('07-
 INSERT INTO quote VALUES (30, TO_DATE('04-Jun-2026','dd-Mon-yyyy'), TO_DATE('08-Jun-2026','dd-Mon-yyyy'),'Adelaide','Melbourne',1000,10,3);
 
 --------------------------------------
+-- Create scheduled job data linking quotes to drivers,
+-- truck/trailer combinations and dispatchers.
+-- The dataset includes repeated combinations and varied job
+-- costs to test relationships, aggregation and business rules.
+
 -- JOB (20 rows)
 --------------------------------------
 
