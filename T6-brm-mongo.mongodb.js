@@ -1,4 +1,4 @@
--- Name: Jordan Lew
+// Name: Jordan Lew
 
 // *****PLEASE ENTER YOUR DETAILS BELOW*****
 // T6-brm-mongo.mongodb.js
@@ -23,10 +23,15 @@ use("bigrig_movers")
 // ENSURE that your query is formatted and has a semicolon
 // (;) at the end of this answer
 
+// Remove the existing collection before recreating it,
+// ensuring the MongoDB collection starts with a clean dataset.
 // Drop collection
 db.customerQuotes.drop();
 
-// Create collection and insert documents
+// Create a collection containing the JSON customer documents
+// generated from the BRM Oracle database.
+// The documents store customer details, customer-level statistics
+// and an embedded array containing each customer's quotes and jobs.
 db.customerQuotes.insertMany([
     {"_id":1,"customer_name":"Michael Benjamin","customer_business":"FreshBox","customer_address":"55 Lonsdale Street, Melbourne, 3008","customer_phone":"0478901017","customer_stats":{"number_of_quotes":5,"number_of_jobs":5,"total_paid_jobcost":"   $1,200.00","total_unpaid_jobcost":"   $5,900.00"},"quotes":[{"quote_no":1,"quote_prepared_on":"05-May-2026","preferred_start_date":"10-May-2026","start_location":"Melbourne","end_location":"Sydney","quote_cost":"   $1,200.00","assigned_to_job":"Y","job_cost":"   $1,200.00"},{"quote_no":18,"quote_prepared_on":"22-May-2026","preferred_start_date":"27-May-2026","start_location":"Perth","end_location":"Sydney","quote_cost":"   $1,700.00","assigned_to_job":"Y","job_cost":"   $1,700.00"},{"quote_no":13,"quote_prepared_on":"17-May-2026","preferred_start_date":"22-May-2026","start_location":"Sydney","end_location":"Brisbane","quote_cost":"   $1,300.00","assigned_to_job":"Y","job_cost":"   $1,300.00"},{"quote_no":8,"quote_prepared_on":"12-May-2026","preferred_start_date":"17-May-2026","start_location":"Sydney","end_location":"Melbourne","quote_cost":"   $1,400.00","assigned_to_job":"Y","job_cost":"   $1,400.00"},{"quote_no":3,"quote_prepared_on":"07-May-2026","preferred_start_date":"12-May-2026","start_location":"Brisbane","end_location":"Melbourne","quote_cost":"   $1,500.00","assigned_to_job":"Y","job_cost":"   $1,500.00"}]},
     {"_id":2,"customer_name":"James ","customer_business":"J Wood and Gravel","customer_address":"15 George Street, Sydney, 2000","customer_phone":"0412345001","customer_stats":{"number_of_quotes":5,"number_of_jobs":5,"total_paid_jobcost":"   $7,300.00","total_unpaid_jobcost":"-"},"quotes":[{"quote_no":2,"quote_prepared_on":"06-May-2026","preferred_start_date":"11-May-2026","start_location":"Perth","end_location":"Adelaide","quote_cost":"     $900.00","assigned_to_job":"Y","job_cost":"     $900.00"},{"quote_no":19,"quote_prepared_on":"23-May-2026","preferred_start_date":"28-May-2026","start_location":"Melbourne","end_location":"Adelaide","quote_cost":"   $1,000.00","assigned_to_job":"Y","job_cost":"   $1,000.00"},{"quote_no":14,"quote_prepared_on":"18-May-2026","preferred_start_date":"23-May-2026","start_location":"Melbourne","end_location":"Perth","quote_cost":"   $1,800.00","assigned_to_job":"Y","job_cost":"   $1,800.00"},{"quote_no":9,"quote_prepared_on":"13-May-2026","preferred_start_date":"18-May-2026","start_location":"Brisbane","end_location":"Perth","quote_cost":"   $1,600.00","assigned_to_job":"Y","job_cost":"   $1,600.00"},{"quote_no":4,"quote_prepared_on":"08-May-2026","preferred_start_date":"13-May-2026","start_location":"Sydney","end_location":"Perth","quote_cost":"   $2,000.00","assigned_to_job":"Y","job_cost":"   $2,000.00"}]},
@@ -50,6 +55,8 @@ db.customerQuotes.insertMany([
     {"_id":20,"customer_name":"Emily Harper","customer_business":"-","customer_address":"127 Parramatta Road, Sydney, 2150","customer_phone":"0467890016","customer_stats":{"number_of_quotes":0,"number_of_jobs":0,"total_paid_jobcost":"-","total_unpaid_jobcost":"-"},"quotes":[{"quote_no":null,"quote_prepared_on":null,"preferred_start_date":null,"start_location":null,"end_location":null,"quote_cost":null,"assigned_to_job":"N","job_cost":"-"}]}
     ]);
 
+// Display the complete customer documents after insertion
+// to verify that the MongoDB collection was populated correctly.
 // List all documents you added
 db.customerQuotes.find();
 
@@ -57,6 +64,11 @@ db.customerQuotes.find();
 // PLEASE PLACE REQUIRED MONGODB COMMAND/S FOR THIS PART HERE
 // ENSURE that your query is formatted and has a semicolon
 // (;) at the end of this answer
+
+// Find customers who have made at least two quotes and whose
+// address contains Melbourne. The projection limits the output
+// to the customer identification, contact details and statistics
+// requested for this analysis.
 db.customerQuotes.find(
   {
     "customer_address": { $regex: "Melbourne" },   // filter by Melbourne in address
@@ -80,7 +92,9 @@ db.customerQuotes.find(
 // ENSURE that your query is formatted and has a semicolon
 // (;) at the end of this answer
 
-// (i)  Add the new customer
+// (i) Add the new customer
+// Insert Patrick Bosse with customer ID 1001 and initialise
+// their quote and job statistics before any quotes are recorded.
 db.customerQuotes.insertOne({
   _id: NumberInt(1001),
   customer_name: "Patrick Bosse",
@@ -96,10 +110,15 @@ db.customerQuotes.insertOne({
   quotes: []
 });
 
+// Confirm that the newly inserted customer's details
+// are stored correctly in the MongoDB collection.
 // Show the customer details
 db.customerQuotes.find({ _id: 1001 });
 
 // (ii) Add new quote
+// Update Patrick Bosse's customer document with their first quote.
+// The quote is immediately assigned to a job, has the same
+// $3,200.00 job cost, and is recorded as fully paid.
 db.customerQuotes.updateOne(
   { _id: 1001 },
   {
@@ -124,10 +143,9 @@ db.customerQuotes.updateOne(
   }
 );
 
+// Confirm that Patrick's customer statistics and new quote
+// have been added successfully after the update.
 // Show the customer details
 db.customerQuotes.find({ _id: 1001 });
 
 // End of file - do not remove
-
-
-
