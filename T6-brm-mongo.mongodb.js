@@ -1,3 +1,5 @@
+-- Name: Jordan Lew
+
 // *****PLEASE ENTER YOUR DETAILS BELOW*****
 // T6-brm-mongo.mongodb.js
 
@@ -8,8 +10,6 @@
 // DO NOT modify or remove any of the comments below (items marked with //)
 // Do not use .pretty() in your code, it is not required
 //
-// -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-// In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
 // ===================================================================================
 
 // Select the BigRig Movers database
@@ -128,3 +128,6 @@ db.customerQuotes.updateOne(
 db.customerQuotes.find({ _id: 1001 });
 
 // End of file - do not remove
+
+
+

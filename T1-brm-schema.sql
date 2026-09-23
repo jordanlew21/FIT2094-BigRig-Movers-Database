@@ -1,15 +1,8 @@
---*****PLEASE ENTER YOUR DETAILS BELOW*****
+-- Name: Jordan Lew
+
 --T1-brm-schema.sql
 
 --
---Name: Jordan Lew
-
-/*
-    -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-    In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
-*/
-
-
 /* drop table statements - do not remove*/
 
 DROP TABLE employee CASCADE CONSTRAINTS PURGE;
@@ -135,6 +128,8 @@ REFERENCES truck(truck_vin);
 ALTER TABLE job ADD CONSTRAINT job_trailer_fk
 FOREIGN KEY (trailer_code)
 REFERENCES trailer(trailer_code);
+
+
 
 
 

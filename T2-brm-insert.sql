@@ -1,9 +1,9 @@
+-- Name: Jordan Lew
+
 /*****PLEASE ENTER YOUR DETAILS BELOW*****/
 --T2-brm-insert.sql
 
 --
---Name: Jordan Lew
-
 /*
 Indicate if AI was used (Yes/No): Yes
 If AI was used:
@@ -103,3 +103,5 @@ INSERT INTO job VALUES (19, TO_DATE('23-May-2026 11:00','dd-Mon-yyyy hh24:mi'), 
 INSERT INTO job VALUES (20, TO_DATE('24-May-2026 12:00','dd-Mon-yyyy hh24:mi'), TO_DATE('25-May-2026 16:00','dd-Mon-yyyy hh24:mi'),1600,'Y',20,3,10,'TRL02','4T1BF1FK5CU123456');
 
 COMMIT;
+
+

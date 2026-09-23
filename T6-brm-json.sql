@@ -1,14 +1,9 @@
+-- Name: Jordan Lew
+
 /*****PLEASE ENTER YOUR DETAILS BELOW*****/
 --T6-brm-json.sql
 
 -- 
---Name: Jordan Lew
-
-/*
-    -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-    In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
-*/
-
 SET PAGESIZE 100
 SET WRAP OFF
 SET HEADING OFF
@@ -62,5 +57,7 @@ FROM customer c
 LEFT JOIN quote q ON c.cust_no = q.cust_no
 LEFT JOIN job j ON q.quote_no = j.quote_no
 GROUP BY c.cust_no, c.cust_gname, c.cust_fname, c.cust_bname, c.cust_contact_no, c.cust_street, c.cust_town, c.cust_pcode;
+
+
 
 

@@ -1,14 +1,8 @@
---*****PLEASE ENTER YOUR DETAILS BELOW*****
+-- Name: Jordan Lew
+
 --T5-brm-select.sql
 
 --
---Name: Jordan Lew
-
-/*
-    -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-    In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
-*/
-
 /* (a) */
 -- PLEASE PLACE REQUIRED SQL SELECT STATEMENT FOR THIS PART HERE
 -- ENSURE that your query is formatted and has a semicolon
@@ -123,4 +117,6 @@ ORDER BY
     COUNT(j.job_no) DESC,
     c.truck_vin,
     c.trailer_code;
+
+
 

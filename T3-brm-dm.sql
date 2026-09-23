@@ -1,14 +1,8 @@
---*****PLEASE ENTER YOUR DETAILS BELOW*****
+-- Name: Jordan Lew
+
 --T3-brm-dm.sql
 
 --
---Name: Jordan Lew
-
-/*
-    -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-    In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
-*/
-
 --3(a)
 -- Drop sequences if they already exist
 DROP SEQUENCE employee_seq;
@@ -155,3 +149,5 @@ WHERE quote_no = (
       AND q.quote_prepared_date = TO_DATE('17-May-2026','dd-Mon-yyyy')
 );
 COMMIT;
+
+

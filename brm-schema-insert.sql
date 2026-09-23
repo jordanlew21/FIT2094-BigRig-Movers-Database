@@ -1,3 +1,5 @@
+-- Name: Jordan Lew
+
 /*
   Databases 2026 S1 Assignment 2
   --BigRig Mover schema and Initial Data
@@ -361,3 +363,5 @@ VALUES ('2FMDK3GC8BBA12345', 'TRL01');
 COMMIT;
 
 SET ECHO OFF
+
+

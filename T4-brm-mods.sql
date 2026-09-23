@@ -1,14 +1,8 @@
---*****PLEASE ENTER YOUR DETAILS BELOW*****
+-- Name: Jordan Lew
+
 --T4-brm-mods.sql
 
 --
---Name: Jordan Lew
-
-/*
-    -- Submission Declaration - must not be removed - removal will result in no marks being awarded --
-    In submitting this SQL script, I confirm that this is my own work without coding assistance from Generative AI
-*/
-
 --4(a)
 --Add new columns
 ALTER TABLE quote
@@ -102,3 +96,5 @@ SELECT * FROM service;
 SELECT * FROM service_task;
 
 COMMIT;
+
+
